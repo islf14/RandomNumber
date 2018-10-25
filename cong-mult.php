@@ -27,13 +27,13 @@
             <form class="formulario" action="cong-mult.php" method="post">
                 <h3>Algoritmo congruencial multiplicativo</h3>
                 <label for="#">Ingrese X0</label>
-                <input type="number" name="x0"><br>
+                <input class="input" type="number" name="x0"><br>
                 <label for="#">Ingrese k</label>
-                <input type="number" name="k"><br>
+                <input class="input" type="number" name="k"><br>
                 <label for="#">Ingrese g</label>
-                <input type="number" name="g"><br>
+                <input class="input" type="number" name="g"><br>
                 <label for="#">Ingrese filas a generar</label>
-                <input type="number" name="f"><br>
+                <input class="input" type="number" name="f"><br>
                 <button class="boton btn-primary" name="enviar">calcular</button>
             </form>
             <div class="resultado">

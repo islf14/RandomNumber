@@ -41,7 +41,7 @@ main{
     color: white;
     text-align: center;
 }
-input{
+.input{
 	border-radius: 3px;
     padding: 5px;
 	border: 0px solid darkgray;
@@ -58,6 +58,9 @@ input{
     cursor: pointer;
 }
 .width_20{
+    width: 20%;
+}
+.width_10{
     width: 20%;
 }
 
