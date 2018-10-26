@@ -5,8 +5,6 @@
         $D = 4;
         $xi = $x0;
         $long = strlen($x0);
-        $xiarray = str_split($x0);
-
         $i = 0;
         $xi_2 = 0;
         $r = 0;
@@ -37,37 +35,58 @@
                 <p>X0: <?php if(isset($_POST['enviar'])){ echo $x0;}?></p>
                 <p>filas: <?php if(isset($_POST['enviar'])){ echo $f;}?></p>
                 <p>longitud X0: <?php if(isset($_POST['enviar'])){ echo $long;}?></p>
-                <p>X0[2]: <?php if(isset($_POST['enviar'])){ echo $xiarray[2];}?></p>
             </div>
         </div>
         <table class="tabla">
             <tr class="titulo_tabla">
                 <th class = "width_10">i</th>
                 <th class = "width_10">Xi</th>
-                <th class = "width_10">Xi^2</th>
-                <th class = "width_10">long. par</th>
-                <th class = "width_10">medios</th>
+                <th class = "width_20">Xi^2</th>
+                <th class = "width_20">long Xi^2</th>
+                <th class = "width_10">Medios</th>
                 <th>ri</th>
             </tr>
             <?php
                 if(isset($_POST['enviar'])){
                     for($i=0;$i<$f;$i++){
-
-                        $xi_2 = pow($xi,2);
-                        $xii = $xi+2;
-                        $l_xii = strlen($xii);
-
-
-
-                        $r = $xii/10000;
+                        $xi_2 = pow($xi,2);//al cuadrado
+                        $l_xi_2 = strlen($xi_2);//su longitud
+                        $array_xi_2 = str_split($xi_2);
+                        $resta = $l_xi_2 - $D;/// 1 - 4 = -3
+                        $newString = "";
+                        $var1 = 0;
+                        if($resta >= 0){
+                            switch ($resta){
+                                case 0:case 1:
+                                    $var1 = 0;break;
+                                case 2:case 3:
+                                    $var1 = 1;break;
+                                case 4:case 5:
+                                    $var1 = 2;break;
+                                case 6:case 7:
+                                    $var1 = 3;break;
+                                case 8:case 9:
+                                    $var1 = 4;break;
+                                case 10:case 11:
+                                    $var1 = 5;break;
+                            }
+                            for($j=0;$j<$D;$j++){
+                                $newarray[$j] = $array_xi_2[$j+$var1];//345684889586
+                                $newString = implode("",$newarray);
+                            }
+                        }else if($resta<0){//D es menor al resultado cuadrado
+                            $newString = $xi_2;
+                        }
+                        $r = $newString/10000;
                         echo "<tr class='fila_tabla'>
                                 <td>".$i."</td>
                                 <td>".$xi."</td>
                                 <td>".$xi_2."</td>
-                                <td>".$l_xii."</td>
-                                <td>".$xii."</td>
+                                <td>".$l_xi_2."</td>
+                                <td>".$newString."</td>
                                 <td>".$r."</td>
                             </tr>";
+                        $xi = $newString;
                     }
                 }
             ?>
