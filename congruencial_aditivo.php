@@ -28,10 +28,10 @@
                 <label for="#">Xi separados por ";" ejm: 40;35;54;... :</label>
                 <input style="width:200px;" type="text" name="xi" value = "<?php if(isset($_POST['enviar'])){echo $xi;}?>"><br>
 
-                <label for="#">Ingrese m</label>
+                <label for="#">Ingrese m:</label>
                 <input  class="input" type="number" name="m" value = "<?php if(isset($_POST['enviar'])){echo $m;}?>"><br>
 
-                <label for="#">Ingrese filas a generar</label>
+                <label for="#">Filas a generar</label>
                 <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $f;}?>"><br>
                 <button class="boton btn-primary" name="enviar">calcular</button>
             </form>
@@ -39,7 +39,7 @@
                 <h3>Calculados:</h3>
                 <p>xi = (xi-1 + xi-n)mod(m)</p>
                 <p>m: <?php if(isset($_POST['enviar'])){ echo $m;}?></p>
-                <p>filas: <?php if(isset($_POST['enviar'])){ echo $f;}?></p>
+                <p>Filas: <?php if(isset($_POST['enviar'])){ echo $f;}?></p>
                 <p>n : <?php if(isset($_POST['enviar'])){ echo $arraysize;}?></p>
             </div>
         </div>
