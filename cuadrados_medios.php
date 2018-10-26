@@ -2,6 +2,7 @@
     if(isset($_POST['enviar'])){
         $x0 = $_POST['xi'];
         $f = $_POST['f'];
+        $D = 4;
         $xi = $x0;
         $long = strlen($x0);
         $xiarray = str_split($x0);
@@ -51,15 +52,19 @@
             <?php
                 if(isset($_POST['enviar'])){
                     for($i=0;$i<$f;$i++){
-                        $xii = $xi+2;
-                        
+
                         $xi_2 = pow($xi,2);
+                        $xii = $xi+2;
+                        $l_xii = strlen($xii);
+
+
+
                         $r = $xii/10000;
                         echo "<tr class='fila_tabla'>
                                 <td>".$i."</td>
                                 <td>".$xi."</td>
                                 <td>".$xi_2."</td>
-                                <td>".$i."</td>
+                                <td>".$l_xii."</td>
                                 <td>".$xii."</td>
                                 <td>".$r."</td>
                             </tr>";
