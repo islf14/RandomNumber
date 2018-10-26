@@ -22,17 +22,17 @@
 <body>
     <main>
         <div class="contenedor-form">
-            <form class="formulario" action="cong-adit.php" method="post">
+            <form class="formulario" action="congruencial_aditivo.php" method="post">
                 <h3>Algoritmo congruencial aditivo</h3>
                 <h4></h4>
-                <label for="#">Xi separados por ";" ejm: 4;3;54.. :</label>
+                <label for="#">Xi separados por ";" ejm: 40;35;54;... :</label>
                 <input style="width:200px;" type="text" name="xi" value = "<?php if(isset($_POST['enviar'])){echo $xi;}?>"><br>
 
                 <label for="#">Ingrese m</label>
-                <input  class="input" type="number" name="m" value = "<?php if(isset($_POST['enviar'])){echo $xm;}?>"><br>
+                <input  class="input" type="number" name="m" value = "<?php if(isset($_POST['enviar'])){echo $m;}?>"><br>
 
                 <label for="#">Ingrese filas a generar</label>
-                <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $xf;}?>"><br>
+                <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $f;}?>"><br>
                 <button class="boton btn-primary" name="enviar">calcular</button>
             </form>
             <div class="resultado">

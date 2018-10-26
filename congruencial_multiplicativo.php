@@ -24,16 +24,16 @@
 <body>
     <main>
         <div class="contenedor-form">
-            <form class="formulario" action="cong-mult.php" method="post">
+            <form class="formulario" action="congruencial_multiplicativo.php" method="post">
                 <h3>Algoritmo congruencial multiplicativo</h3>
                 <label for="#">Ingrese X0</label>
-                <input class="input" type="number" name="x0"><br>
+                <input class="input" type="number" name="x0" value = "<?php if(isset($_POST['enviar'])){echo $x0;}?>"><br>
                 <label for="#">Ingrese k</label>
-                <input class="input" type="number" name="k"><br>
+                <input class="input" type="number" name="k" value = "<?php if(isset($_POST['enviar'])){echo $k;}?>"><br>
                 <label for="#">Ingrese g</label>
-                <input class="input" type="number" name="g"><br>
+                <input class="input" type="number" name="g" value = "<?php if(isset($_POST['enviar'])){echo $g;}?>"><br>
                 <label for="#">Ingrese filas a generar</label>
-                <input class="input" type="number" name="f"><br>
+                <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $f;}?>"><br>
                 <button class="boton btn-primary" name="enviar">calcular</button>
             </form>
             <div class="resultado">
