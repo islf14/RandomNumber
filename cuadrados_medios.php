@@ -1,14 +1,19 @@
 <?php
     $D = 4;
+    $Z = 1.96;
+    $f = 0;
+    $media = 1;
     if(isset($_POST['enviar'])){
         $x0 = $_POST['xi'];
         $f = $_POST['f'];
         $D = $_POST['D'];
+        $Z = $_POST['Z'];
         $xi = $x0;
         $long = strlen($x0);
         $i = 0;
         $xi_2 = 0;
         $r = 0;
+        $total = 0;
     }
 ?>
 
@@ -31,7 +36,10 @@
                 <input class="input" type="number" name="D" value = "<?php echo $D;?>"><br>
                 <label for="#">Filas a generar</label>
                 <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $f;}?>"><br>
-                <button class="boton btn-primary" name="enviar">calcular</button>
+                <label for="Z">Z_[alfa/2]: </label>
+                <input class="input" type="number" name="Z" value = "<?php echo $Z;?>"><br>
+                <button class="boton btn-primary" name="enviar">calcular</button><br><br>
+                <a class="btn btn-success boton" href="index.html">Regresar</a>
             </form>
             <div class="resultado">
                 <h3>Calculados:</h3>
@@ -83,6 +91,7 @@
                             $newString = $xi_2;
                         }
                         $r = '0.'.$newString;
+                        $total = $total + $r;
                         echo "<tr class='fila_tabla'>
                                 <td>".$i."</td>
                                 <td>".$xi."</td>
@@ -93,9 +102,21 @@
                             </tr>";
                         $xi = $newString;
                     }
+                    $media = $total/$f;
                 }
             ?>
         </table>
+        <div>
+            <h3>Prueba de medias</h3>
+            <?php ?>
+            <p>Media: <?php if(isset($_POST['enviar'])){ echo $media;}?></p>
+            <?php 
+                $med = 0.5;
+                
+            ?>
+            
+        </div>
+        
         <a class="btn btn-success boton" href="index.html">Regresar</a>
     </main>  
 </body>
