@@ -108,12 +108,18 @@
         </table>
         <div>
             <h3>Prueba de medias</h3>
-            <?php ?>
             <p>Media: <?php if(isset($_POST['enviar'])){ echo $media;}?></p>
-            <?php 
-                $med = 0.5;
-                
+            <?php
+                if(isset($_POST['enviar'])){
+                    $n = $f;
+                    $med = 0.5;
+                    $frac = 1/(sqrt(12*$n));
+                    $valmin = $med - $Z*$frac;
+                    $valmax = $med + $Z*$frac;
+                }   
             ?>
+            <p>Límite de aceptación Inferior: <?php if(isset($_POST['enviar'])){ echo $valmin;}?></p>
+            <p>Límite de aceptación Superior: <?php if(isset($_POST['enviar'])){ echo $valmax;}?></p>
             
         </div>
         

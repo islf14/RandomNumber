@@ -1,17 +1,20 @@
 <?php
-    $D = 4;
+    $Z = 1.96;
+    $f = 0;
+    $media = 1;
     if(isset($_POST['enviar'])){
         $x0 = $_POST['x0'];
         $a = $_POST['a'];
         $c = $_POST['c'];
         $m = $_POST['m'];
         $f = $_POST['f'];
+        $Z = $_POST['Z'];
         $xi = $x0;
         $long_x0 = strlen($x0);
-        
         $i = 0;
         $xi_2 = 0;
         $r = 0;
+        $total = 0;
     }
 ?>
 
@@ -38,7 +41,10 @@
                 <input class="input" type="number" name="m" value = "<?php echo $m;?>"><br>
                 <label for="#">Ingrese filas a generar</label>
                 <input class="input" type="number" name="f" value = "<?php if(isset($_POST['enviar'])){echo $f;}?>"><br>
-                <button class="boton btn-primary" name="enviar">calcular</button>
+                <label for="Z">Z_[alfa/2]: </label>
+                <input class="input" type="number" name="Z" value = "<?php echo $Z;?>"><br>
+                <button class="boton btn-primary" name="enviar">calcular</button><br><br>
+                <a class="btn btn-success boton" href="index.html">Regresar</a>
             </form>
             <div class="resultado">
                 <h3>Calculados:</h3>
@@ -61,7 +67,8 @@
                 if(isset($_POST['enviar'])){
                     for($i=0;$i<$f;$i++){
                         $xi_2 = ($xi*$a+$c)%$m;
-                        $r = $xi_2/($m-1); 
+                        $r = $xi_2/($m-1);
+                        $total = $total + $r;
                         echo "<tr class='fila_tabla'>
                                 <td>".$i."</td>
                                 <td>".$xi."</td>
@@ -70,9 +77,25 @@
                             </tr>";
                         $xi = $xi_2;
                     }
+                    $media = $total/$f;
                 }
             ?>
         </table>
+        <div>
+            <h3>Prueba de medias</h3>
+            <p>Media: <?php if(isset($_POST['enviar'])){ echo $media;}?></p>
+            <?php
+                if(isset($_POST['enviar'])){
+                    $n = $f;
+                    $med = 0.5;
+                    $frac = 1/(sqrt(12*$n));
+                    $valmin = $med - $Z*$frac;
+                    $valmax = $med + $Z*$frac;
+                }
+            ?>
+            <p>Límite de aceptación Inferior: <?php if(isset($_POST['enviar'])){ echo $valmin;}?></p>
+            <p>Límite de aceptación Superior: <?php if(isset($_POST['enviar'])){ echo $valmax;}?></p>
+        </div>
         <a class="btn btn-success boton" href="index.html">Regresar</a>
     </main>  
 </body>
